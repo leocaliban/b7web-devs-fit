@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-    Container,
     WelcomeText,
     WelcomeImage,
     WelcomeLogo,
@@ -10,6 +9,7 @@ import {
 } from './StarterIntroStyles';
 
 import DefaultButton from '../../components/DefaultButton';
+import Container from '../../components/ContainerComponent';
 
 const Page = (props) => {
 
@@ -18,7 +18,7 @@ const Page = (props) => {
     };
 
     return (
-        <Container>
+        <Container justifyContent="center">
             <WelcomeText>Bem Vindo ao DevsFit</WelcomeText>
             <WelcomeImage>
                 <WelcomeLogo source={require('../../assets/boneco.png')}></WelcomeLogo>

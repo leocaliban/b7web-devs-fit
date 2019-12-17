@@ -1,14 +1,5 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.SafeAreaView`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    margin-left: 30px;
-    margin-right: 30px;
-`;
-
 export const WelcomeText = styled.Text`
     font-size: 22px;
     color: #333333;
