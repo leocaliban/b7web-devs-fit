@@ -4,12 +4,12 @@ import {
     WelcomeText,
     WelcomeImage,
     WelcomeLogo,
-    ConfigArea,
-    ButtonText
+    ConfigArea
 } from './StarterIntroStyles';
 
 import DefaultButton from '../../components/DefaultButton';
 import Container from '../../components/ContainerComponent';
+import ButtonText from '../../components/ButtonTextComponent';
 
 const Page = (props) => {
 

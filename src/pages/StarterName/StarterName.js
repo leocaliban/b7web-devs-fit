@@ -7,7 +7,6 @@ import {
     NextButton
 } from '../StarterName/StarterNameStyles';
 
-import DefaultButton from '../../components/DefaultButton';
 import Container from '../../components/ContainerComponent';
 
 const Page = (props) => {

@@ -20,7 +20,3 @@ export const ConfigArea = styled.View`
     margin-bottom: 50px;
     width: 100%;
 `;
-
-export const ButtonText = styled.Text`
-    color: #FFFFFF;
-`;

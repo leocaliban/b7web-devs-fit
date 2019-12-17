@@ -7,4 +7,5 @@ export default styled.TouchableHighlight`
     border-radius: 100px;
     justify-content: center;
     align-items: center;
+    margin-bottom: ${props => props.marginBottom || '0'};
 `;
