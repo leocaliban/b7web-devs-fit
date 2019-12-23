@@ -13,6 +13,8 @@ export default (state = initialState, action) => {
         case 'SET_NAME':
             return { ...state, name: action.payload.name };
 
+        case 'SET_WORKOUTDAYS':
+            return { ...state, workoutDays: action.payload.workoutDays };
         default:
             break;
     }

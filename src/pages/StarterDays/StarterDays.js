@@ -15,14 +15,25 @@ import ButtonText from '../../components/ButtonTextComponent';
 const Page = (props) => {
 
     const dias = [
+        { label: 'Domingo' },
         { label: 'Segunda' },
         { label: 'Terça' },
         { label: 'Quarta' },
         { label: 'Quinta' },
         { label: 'Sexta' },
-        { label: 'Sábado' },
-        { label: 'Domingo' }
+        { label: 'Sábado' }
     ];
+
+    const toggleDay = (day) => {
+        let newWorkoutDays = [...props.workoutDays];
+        if (!props.workoutDays.includes(day)) {
+            newWorkoutDays.push(day);
+        } else {
+            newWorkoutDays = newWorkoutDays.filter(element => element !== day);
+        }
+        props.setWorkoutDays(newWorkoutDays);
+        props.navigation.setParams({ workoutDays: newWorkoutDays });
+    };
 
     let firstName = props.name.split(' ')[0];
 
@@ -35,12 +46,16 @@ const Page = (props) => {
                 {
                     dias.map((dia, index) =>
                         <DefaultButton
-                            width="100px"
-                            bgcolor="#0072C0"
+                            width="100%"
+                            bgcolor={props.workoutDays.includes(index) ? '#A5E8BC' : '#0072C0'}
                             marginBottom="20px"
                             key={index}
+                            onPress={() => toggleDay(index)}
+                            underlayColor="#CCCCCC"
                         >
-                            <ButtonText>{dia.label}</ButtonText>
+                            <ButtonText
+                                color={props.workoutDays.includes(index) ? '#000000' : false}
+                            >{dia.label}</ButtonText>
                         </DefaultButton>
                     )
                 }
@@ -52,11 +67,11 @@ const Page = (props) => {
 Page.navigationOptions = ({ navigation }) => {
 
     const nextAction = () => {
-        if (!navigation.state.params || !navigation.state.params.name) {
-            alert('Você precisa digitar seu nome!');
+        if (!navigation.state.params || !navigation.state.params.newWorkoutDays.length) {
+            alert('Você precisa treinar pelo menos 1 dia!');
             return;
         }
-        navigation.navigate('StarterDays');
+        navigation.navigate('StarterLevel');
     };
 
     return {
@@ -70,13 +85,16 @@ Page.navigationOptions = ({ navigation }) => {
 
 const mapStateToProps = (state) => {
     return {
-        name: state.userReducer.name
+        name: state.userReducer.name,
+        workoutDays: state.userReducer.workoutDays
     }
 }
 
 const mapDispatchProps = (dispatch) => {
     return {
-        setName: (name) => dispatch({ type: 'SET_NAME', payload: { name } })
+        setName: (name) => dispatch({ type: 'SET_NAME', payload: { name } }),
+        setWorkoutDays: (workoutDays) =>
+            dispatch({ type: 'SET_WORKOUTDAYS', payload: { workoutDays } })
     }
 }
 
