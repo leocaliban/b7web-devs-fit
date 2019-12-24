@@ -15,6 +15,9 @@ export default (state = initialState, action) => {
 
         case 'SET_WORKOUTDAYS':
             return { ...state, workoutDays: action.payload.workoutDays };
+
+        case 'SET_LEVEL':
+            return { ...state, level: action.payload.level };
         default:
             break;
     }

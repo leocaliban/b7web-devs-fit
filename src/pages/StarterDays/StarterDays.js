@@ -67,7 +67,7 @@ const Page = (props) => {
 Page.navigationOptions = ({ navigation }) => {
 
     const nextAction = () => {
-        if (!navigation.state.params || !navigation.state.params.newWorkoutDays.length) {
+        if (!navigation.state.params || !navigation.state.params.workoutDays.length) {
             alert('Você precisa treinar pelo menos 1 dia!');
             return;
         }
