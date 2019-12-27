@@ -59,32 +59,38 @@ const Page = (props) => {
 
                 <DefaultButton
                     width="100%"
-                    bgcolor={props.level === 'beginner' ? '#A5E8BC' : false}
+                    bgcolor={props.level === 'beginner' ? '#A5E8BC' : '#0072C0'}
                     marginBottom="20px"
                     underlayColor="#CCCCCC"
                     onPress={() => selectLevel('beginner')}
                 >
-                    <ButtonText>Iniciante / Um frango</ButtonText>
+                    <ButtonText
+                        color={props.level === 'beginner' ? '#000000' : false}
+                    >Iniciante / Um frango</ButtonText>
                 </DefaultButton>
 
                 <DefaultButton
                     width="100%"
-                    bgcolor={props.level === 'intermediate' ? '#A5E8BC' : false}
+                    bgcolor={props.level === 'intermediate' ? '#A5E8BC' : '#0072C0'}
                     marginBottom="20px"
                     underlayColor="#CCCCCC"
                     onPress={() => selectLevel('intermediate')}
                 >
-                    <ButtonText>Intermediário / Me viro bem</ButtonText>
+                    <ButtonText
+                        color={props.level === 'intermediate' ? '#000000' : false}
+                    >Intermediário / Me viro bem</ButtonText>
                 </DefaultButton>
 
                 <DefaultButton
                     width="100%"
-                    bgcolor={props.level === 'advanced' ? '#A5E8BC' : false}
+                    bgcolor={props.level === 'advanced' ? '#A5E8BC' : '#0072C0'}
                     marginBottom="20px"
                     underlayColor="#CCCCCC"
                     onPress={() => selectLevel('advanced')}
                 >
-                    <ButtonText>Avançado / Monstro</ButtonText>
+                    <ButtonText
+                        color={props.level === 'advanced' ? '#000000' : false}
+                    >Avançado / Monstro</ButtonText>
                 </DefaultButton>
 
             </LevelArea>
@@ -99,7 +105,7 @@ Page.navigationOptions = ({ navigation }) => {
             alert('Você precisa selecionar um nível!');
             return;
         }
-        navigation.navigate('StarterRecomendations');
+        navigation.navigate('StarterRecommendations');
     };
 
     return {
