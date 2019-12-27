@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 
 import useMuscleImage from './utils/useMuscleImage';
 
 export default (props) => {
+
+    const [included, setIncluded] = useState(false);
 
     let muscleGroups = [];
 
@@ -12,6 +14,11 @@ export default (props) => {
             muscleGroups.push(props.data.exercises[i].muscle);
         }
     }
+
+    const addWorkout = () => {
+        setIncluded(!included);
+        props.addAction();
+    };
 
     return (
         <Workout>
@@ -26,8 +33,14 @@ export default (props) => {
                 </MuscleScroll>
             </WorkoutInfo>
             <WorkoutActions>
-                <WorkoutButton>
-                    <WorkoutIcon source={require('../assets/add.png')}></WorkoutIcon>
+                <WorkoutButton
+                    onPress={() => addWorkout()}
+                    underlayColor="transparent"
+                >
+                    <WorkoutIcon
+                        source={included ? require('../assets/check-black.png') :
+                            require('../assets/add.png')}
+                    ></WorkoutIcon>
                 </WorkoutButton>
             </WorkoutActions>
         </Workout >

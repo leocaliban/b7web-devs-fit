@@ -22,6 +22,14 @@ const Page = (props) => {
         props.navigation.setParams({ myWorkouts: props.myWorkouts })
     }, [props.myWorkouts]);
 
+    const addWorkout = (item) => {
+        if (props.myWorkouts.findIndex(i => i.id == item.id) < 0) {
+            props.addWorkout(item);
+        } else {
+            props.deleteWorkout(item);
+        }
+    };
+
     return (
         <Container>
 
@@ -30,7 +38,11 @@ const Page = (props) => {
 
             <WorkoutList
                 data={workoutData}
-                renderItem={({item}) => <Workout data={item}></Workout>}
+                renderItem={({ item }) =>
+                    <Workout
+                        data={item}
+                        addAction={() => addWorkout(item)}
+                    ></Workout>}
                 keyExtractor={item => item.id}
             ></WorkoutList>
         </Container>
@@ -69,7 +81,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
     return {
-        setLevel: (level) => dispatch({ type: 'SET_LEVEL', payload: { level } })
+        addWorkout: (workout) => dispatch({ type: 'ADD_WORKOUT', payload: { workout } }),
+        deleteWorkout: (workout) => dispatch({ type: 'DELETE_WORKOUT', payload: { workout } })
     }
 }
 
