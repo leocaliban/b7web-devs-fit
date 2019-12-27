@@ -12,6 +12,7 @@ import DefaultButton from '../../components/DefaultButton';
 import Container from '../../components/ContainerComponent';
 import ButtonText from '../../components/ButtonTextComponent';
 import Bolder from '../../components/BolderComponent';
+import Workout from '../../components/WorkoutComponent';
 
 import workoutData from '../../presetWorkouts.json';
 
@@ -29,7 +30,7 @@ const Page = (props) => {
 
             <WorkoutList
                 data={workoutData}
-                renderItem={({item}) => <HeaderText>{item.name}</HeaderText>}
+                renderItem={({item}) => <Workout data={item}></Workout>}
                 keyExtractor={item => item.id}
             ></WorkoutList>
         </Container>
