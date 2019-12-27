@@ -5,7 +5,7 @@ const Preload = (props) => {
     if (!props.name) {
         resetNavigation(props, 'StarterStack');
     } else {
-        resetNavigation(props, 'StarterStack');
+        resetNavigation(props, 'AppTab');
     }
     return null;
 };

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 import {
     HeaderText,
-    LevelArea,
     NextButton,
     WorkoutList
 } from './StarterRecommendationsStyle';
@@ -57,11 +57,12 @@ Page.navigationOptions = ({ navigation }) => {
         headerButton = 'Concluir';
     }
     const nextAction = () => {
-        // if (!navigation.state.params || !navigation.state.params.level) {
-        //     alert('Você precisa selecionar um nível!');
-        //     return;
-        // }
-        // navigation.navigate('StarterRecommendations');
+        navigation.dispatch(StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'AppTab' })
+            ]
+        }))
     };
 
     return {
