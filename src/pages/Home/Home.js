@@ -2,17 +2,45 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Container from '../../components/ContainerComponent';
+import MonthScroll from '../../components/Home/MonthScroll';
+import DaysScroll from '../../components/Home/DaysScroll';
+import DayStatus from '../../components/Home/DayStatus';
 
 import {
     ConfigButtonArea,
-    ConfigButtonImage
+    ConfigButtonImage,
+    Legend,
+    LegendText,
+    LegendItem,
+    LegendBox
 } from './HomeStyle';
 
 const Page = (props) => {
 
+    const legendas = [
+        { label: 'Hoje', color: '#B5EEFF' },
+        { label: 'Treino feito', color: '#B5FFB8' },
+        { label: 'Treino perdido', color: '#FFB5B5' },
+        { label: 'Dia de descanso', color: '#F4F4F4' },
+        { label: 'Dia futuro', color: '#FFF2B0' },
+    ]
+
     return (
         <Container>
+            <MonthScroll></MonthScroll>
+            <DaysScroll></DaysScroll>
+            <DayStatus></DayStatus>
 
+            <Legend>
+                <LegendText>Legenda:</LegendText>
+
+                {legendas.map((legenda, index) => 
+                    <LegendItem key={index}>
+                        <LegendBox color={legenda.color}></LegendBox>
+                        <LegendText>{legenda.label}</LegendText>
+                    </LegendItem>
+                )}
+            </Legend>
         </Container>
     );
 };

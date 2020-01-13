@@ -12,4 +12,28 @@ export const ConfigButtonImage = styled.Image`
     height: 25px;
 `;
 
+export const Legend = styled.View`
+    width: 90%;
+    align-items: flex-start;
+    margin-top: 30px;
+`;
+
+export const LegendText = styled.Text`
+    color: #555555;
+`;
+
+export const LegendItem = styled.View`
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+`;
+
+export const LegendBox = styled.View`
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: ${props => props.color || '#CCCCCC'};
+    margin-right: 5px;
+`;
+
 
