@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.SafeAreaView`
+    align-items: center;
+`;
+
 export const ConfigButtonArea = styled.TouchableHighlight`
     width: 30px;
     height: 30px;
