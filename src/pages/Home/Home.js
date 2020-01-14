@@ -20,6 +20,7 @@ const Page = (props) => {
     let today = new Date();
 
     const [selectedMonth, setSelectedMonth] = useState(today.getMonth());
+    const [selectedDay, setSelectedDay] = useState(today.getDate());
 
     const legendas = [
         { label: 'Hoje', color: '#B5EEFF' },
@@ -35,11 +36,21 @@ const Page = (props) => {
                 selectedMonth={selectedMonth}
                 setSelectedMonth={setSelectedMonth}
             ></MonthScroll>
-            <DaysScroll></DaysScroll>
+
+            <DaysScroll
+                selectedMonth={selectedMonth}
+                selectedDay={selectedDay}
+                setSelectedDay={setSelectedDay}
+
+                dailyProgress={props.dailyProgress}
+                workoutDays={props.workoutDays}
+            ></DaysScroll>
+
             <DayStatus></DayStatus>
 
 
             <LegendText>Mês: {selectedMonth}</LegendText>
+            <LegendText>Dia: {selectedDay}</LegendText>
             <Legend>
                 <LegendText>Legenda:</LegendText>
 
@@ -79,6 +90,8 @@ Page.navigationOptions = ({ navigation }) => {
 
 const mapStateToProps = (state) => {
     return {
+        dailyProgress: state.userReducer.dailyProgress,
+        workoutDays: state.userReducer.workoutDays
     }
 }
 
