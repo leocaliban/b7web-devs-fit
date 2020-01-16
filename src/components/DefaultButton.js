@@ -8,4 +8,5 @@ export default styled.TouchableHighlight`
     justify-content: center;
     align-items: center;
     margin-bottom: ${props => props.marginBottom || '0'};
+    margin-top: ${props => props.marginTop || '0'};
 `;
