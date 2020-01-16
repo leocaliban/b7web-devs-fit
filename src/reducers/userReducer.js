@@ -10,6 +10,8 @@ const initialState = {
 export default (state = initialState, action) => {
 
     let myWorkouts = [...state.myWorkouts];
+    let dailyProgress = [...state.dailyProgress];
+
     switch (action.type) {
         case 'SET_NAME':
             return { ...state, name: action.payload.name };
@@ -28,6 +30,17 @@ export default (state = initialState, action) => {
         case 'DELETE_WORKOUT':
             myWorkouts = myWorkouts.filter(i => i.id !== action.payload.workout.id);
             return { ...state, myWorkouts };
+
+        case 'ADD_PROGRESS':
+            if (!dailyProgress.includes(action.payload.date)) {
+                dailyProgress.push(action.payload.date);
+            }
+            return { ...state, dailyProgress };
+
+        case 'DELETE_PROGRESS':
+            dailyProgress = dailyProgress.filter(i => i !== action.payload.date);
+            return { ...state, dailyProgress };
+            
         default:
             break;
     }
