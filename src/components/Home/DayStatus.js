@@ -84,6 +84,37 @@ export default (props) => {
     const setUnDone = () => {
         props.deleteProgress(formattedDate);
     };
+
+    const [timeLeft, setTimeLeft] = useState('');
+    useEffect(() => {
+
+        const timerFunction = () => {
+            let now = Date.now();
+
+            let dayEnd = new Date();
+            dayEnd.setHours(23);
+            dayEnd.setMinutes(59);
+            dayEnd.setSeconds(59);
+            dayEnd = dayEnd.getTime();
+
+            let difference = dayEnd - now;
+
+            let hour = Math.floor(difference / (1000 * 60 * 60));
+            let minutes = Math.floor((difference / (1000 * 60)) - (hour * 60));
+            let seconds = Math.floor((difference / (1000)) - (minutes * 60) - ((hour * 60) * 60));
+
+            hour = hour < 10 ? '0' + hour : hour;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            setTimeLeft(`${hour}h ${minutes}m ${seconds}s`);
+        };
+
+        let timer = setInterval(timerFunction, 1000);
+        timerFunction();
+        return () => clearInterval(timer);
+
+    }, []);
     return (
         <>
             <Arrow></Arrow>
@@ -123,7 +154,7 @@ export default (props) => {
                 {!dayOff && !isFuture && !isDone && isToday &&
                     <>
                         <MainText>HOJE TEM TREINO!</MainText>
-                        <CardTime>Você tem 30 minutos para treinar.</CardTime>
+                        <CardTime>Você tem {timeLeft} para treinar.</CardTime>
                         <DefaultButton
                             bgcolor="#4AC34E"
                             marginTop="20"
